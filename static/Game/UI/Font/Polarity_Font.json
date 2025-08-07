@@ -1,0 +1,11 @@
+[
+  {
+    "Type": "FontFace",
+    "Name": "Polarity_Font",
+    "Class": "UScriptClass'FontFace'",
+    "Properties": {
+      "SourceFilename": "../../../../../Branch/G20250529/EM/Content/UI/Font/Polarity_Font.ufont",
+      "LoadingPolicy": "EFontLoadingPolicy::Inline"
+    }
+  }
+]
