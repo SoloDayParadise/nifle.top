@@ -1,15 +1,13 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 
-const dev = process.argv.includes('dev');
-const base = process.env.BASE_PATH ?? '';
-
-/** @type {import('@sveltejs/kit').Config} */
-const config = {
-	kit: {
-		adapter: adapter(),
-		paths: { base },
-		prerender: { handleHttpError: 'warn', entries: ['*'] }
-	}
+export default {
+  kit: {
+    adapter: adapter(),
+    paths: {
+      base: '/nifle.top', 
+    },
+    prerender: {
+      handleHttpError: 'warn'
+    }
+  }
 };
-
-export default config;
