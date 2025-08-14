@@ -5,12 +5,11 @@
 
 	const { characters, elements } = data;
 
-	let activeFilter = 'All';
+	let activeFilter = null;
 
-	$: filteredCharacters =
-		activeFilter === 'All'
-			? characters
-			: characters.filter((char) => char.attribute === activeFilter);
+	$: filteredCharacters = activeFilter
+		? characters.filter((char) => char.attribute === activeFilter)
+		: characters;
 
 	function charRarityToColor(rarityNum) {
 		if (rarityNum == 5) return '#CEB385';
@@ -27,8 +26,9 @@
 		{#each elements as element}
 			<div class="tooltip-wrapper">
 				<button
-					class={`filter-button ${activeFilter === element.id ? 'active' : ''}`}
-					on:click={() => (activeFilter = element.id)}
+					class="filter-button"
+					class:active={activeFilter === element.id}
+					on:click={() => (activeFilter = activeFilter === element.id ? null : element.id)}
 				>
 					<img src={element.img} alt={element.name} style="height: 40px" />
 				</button>
@@ -42,7 +42,11 @@
 		{#each filteredCharacters as character (character.id)}
 			<!-- Используем slug (это ID персонажа) для ссылки -->
 			<a href="/characters/{character.id}" class="item-card">
-				<img src="/CommonIcons/T_Armory_{character.attribute}.svg" alt="Attribute" class="item-attribute" />
+				<img
+					src="/CommonIcons/T_Armory_{character.attribute}.svg"
+					alt="Attribute"
+					class="item-attribute"
+				/>
 				<div class="item-top">
 					<img
 						src={character.icon}
@@ -140,7 +144,6 @@
 		align-items: flex-end;
 	}
 
-
 	.item-card:hover {
 		/* transform: scale(1.2); */
 		box-shadow: 0 5px 15px rgba(133, 133, 133, 0.925);
@@ -175,7 +178,7 @@
 		padding: 0.3rem 0.7rem;
 		border-radius: 6px;
 	}
-	
+
 	.tooltip-wrapper {
 		position: relative;
 		display: inline-block;

@@ -6,9 +6,6 @@
 
 	let level = 1;
 
-	function ceilValue(val) {
-		return Math.ceil(val);
-	}
 </script>
 
 <div class="char-detail-page">
@@ -54,7 +51,7 @@
 		<div class="details-panel">
 			<div class="header">
 				<div class="element">
-					<img src="/CommonIcons/T_Armory_{character.attribute}.svg" style="height: 40px" />
+					<img src="/CommonIcons/T_Armory_{character.attribute}.svg" style="height: 40px; margin-right: -1rem; margin-left: -0.5rem;"/>
 				</div>
 				<h1 class="char-name">{character.name}</h1>
 				<div class="rarity">
@@ -75,34 +72,33 @@
 						</span>
 					{/each}
 				</div>
-			</div>
-
-			<div class="sub-header">
-				<!--<span class="element-tag {character.element.toLowerCase()}">{character.element}</span>-->
-				<span class="camp-tag">{character.camp}</span>
+        <h1 style="background-color: #930104;
+    padding: 0.4rem;
+    border-radius: 10px;
+    margin-bottom: 0%;">Lv. {level}</h1>
 			</div>
 
 			<div class="stats-section">
-				<h2>STATS (Lv. {level})</h2>
+				
 				<input class="slider" type="range" min="1" max="80" bind:value={level} />
 
 				<table class="stats-table">
 					<tbody>
 						<tr>
-							<td class="prop">ATK</td>
-							<td class="propNum">{ceilValue(character.stats.atk[level])}</td>
+							<td class="prop" style="background-color: #303030;">ATK</td>
+							<td class="propNum" style="background-color: #303030;">{Math.ceil(character.stats.atk[level-1])}</td>
 						</tr>
 						<tr>
-							<td class="prop">DEF</td>
-							<td class="propNum">{ceilValue(character.stats.def[level])}</td>
+							<td class="prop" style="background-color: #212121;">DEF</td>
+							<td class="propNum" style="background-color: #212121;">{Math.ceil(character.stats.def[level-1])}</td>
 						</tr>
 						<tr>
-							<td class="prop">Max HP</td>
-							<td class="propNum">{ceilValue(character.stats.maxHp[level])}</td>
+							<td class="prop" style="background-color: #303030;">Max HP</td>
+							<td class="propNum" style="background-color: #303030;">{Math.ceil(character.stats.maxHp[level-1])}</td>
 						</tr>
 						<tr>
-							<td class="prop">Max Sanity</td>
-							<td class="propNum">{ceilValue(character.stats.maxEs[level])}</td>
+							<td class="prop" style="background-color: #212121;">Max Sanity</td>
+							<td class="propNum" style="background-color: #212121;">{Math.ceil(character.stats.maxEs[level-1])}</td>
 						</tr>
 					</tbody>
 				</table>
@@ -170,7 +166,7 @@
 		flex-grow: 1;
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 1rem;
 	}
 
 	.header {
@@ -192,13 +188,7 @@
 		color: #f1c40f;
 	}
 
-	.sub-header {
-		display: flex;
-		gap: 1rem;
-		align-items: center;
-	}
-
-	.element-tag {
+	.element {
 		padding: 0.3rem 0.8rem;
 		border-radius: 16px;
 		font-weight: bold;
@@ -212,9 +202,9 @@
 		color: #a0a0a0;
 	}
 
-	.stats-section {
+	/* .stats-section {
 		margin-top: 2rem;
-	}
+	} */
 
 	input[type='range'] {
 		width: 100%;

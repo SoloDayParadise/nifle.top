@@ -6,11 +6,6 @@ export function load() {
 	const characters = getProcessedCharacters();
 	const elements = [
 		{
-			id: 'All',
-			name: 'All',
-			img: '/images/UI/Filter/T_Tab_All.png'
-		},
-		{
 			id: 'Water',
 			name: 'Hydro',
 			img: '/images/UI/Filter/T_Tab_Water.png'

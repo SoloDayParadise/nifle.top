@@ -5,10 +5,14 @@
 
 	const { weapons, types } = data;
 
-	let activeFilter = 'All';
+	const rangedTypes = types.filter((t) => t.dist === 'RangedType');
+	const meleeTypes = types.filter((t) => t.dist === 'MeleeType');
 
-	$: filteredWeapons =
-		activeFilter === 'All' ? weapons : weapons.filter((weapon) => weapon.type === activeFilter);
+	let activeFilter = null;
+
+	$: filteredWeapons = activeFilter
+		? weapons.filter((weapon) => weapon.type === activeFilter)
+		: weapons;
 
 	function charRarityToColor(rarityNum) {
 		if (rarityNum == 5) return '#CEB385';
@@ -23,19 +27,37 @@
 	<h1>WEAPONS</h1>
 
 	<!-- Фильтры -->
-	<div class="filter-bar">
-		{#each types as type}
-			<div class="tooltip-wrapper">
-				<button
-					class:active={activeFilter === type.id}
-					class="filter-button"
-					on:click={() => (activeFilter = type.id)}
-				>
-					<img src={type.img} alt={type.name} style="height: 40px" />
-				</button>
-				<div class="tooltip-text">{type.name}</div>
-			</div>
-		{/each}
+	<div class="filter-bars">
+		<div class="filter-bar" style="display: flex; text-align: center; align-items: center;">
+			<h2>RANGE</h2>
+			{#each rangedTypes as type}
+				<div class="tooltip-wrapper">
+					<button
+						class:active={activeFilter === type.id}
+						class="filter-button"
+						on:click={() => (activeFilter = activeFilter === type.id ? null : type.id)}
+					>
+						<img src={type.img} alt={type.name} style="height: 40px" />
+					</button>
+					<div class="tooltip-text">{type.name}</div>
+				</div>
+			{/each}
+		</div>
+		<div class="filter-bar" style="display: flex; text-align: center; align-items: center;">
+			<h2>MELEE</h2>
+			{#each meleeTypes as type}
+				<div class="tooltip-wrapper">
+					<button
+						class:active={activeFilter === type.id}
+						class="filter-button"
+						on:click={() => (activeFilter = activeFilter === type.id ? null : type.id)}
+					>
+						<img src={type.img} alt={type.name} style="height: 40px" />
+					</button>
+					<div class="tooltip-text">{type.name}</div>
+				</div>
+			{/each}
+		</div>
 	</div>
 
 	<!-- Сетка с персонажами -->
@@ -92,6 +114,12 @@
 		font-family: Advent Pro;
 		margin-top: 0%;
 		font-size: -webkit-xxx-large;
+	}
+
+	.filter-bars {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
 	}
 
 	.filter-bar {

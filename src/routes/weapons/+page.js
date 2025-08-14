@@ -51,37 +51,37 @@ export function load() {
 			id: 'Claymore',
 			name: 'Greatsword',
 			img: '/images/UI/Filter/T_Armory_WeaponType_Claymore.png',
-			dist: 'RangedType'
+			dist: 'MeleeType'
 		},
 		{
 			id: 'Dualblade',
 			name: 'Dual Blades',
 			img: '/images/UI/Filter/T_Armory_WeaponType_Dualblade.png',
-			dist: 'RangedType'
+			dist: 'MeleeType'
 		},
 		{
 			id: 'Katana',
 			name: 'Katana',
 			img: '/images/UI/Filter/T_Armory_WeaponType_Katana.png',
-			dist: 'RangedType'
+			dist: 'MeleeType'
 		},
 		{
 			id: 'Polearm',
 			name: 'Polearm',
 			img: '/images/UI/Filter/T_Armory_WeaponType_Polearm.png',
-			dist: 'RangedType'
+			dist: 'MeleeType'
 		},
 		{
 			id: 'Sword',
 			name: 'Sword',
 			img: '/images/UI/Filter/T_Armory_WeaponType_Sword.png',
-			dist: 'RangedType'
+			dist: 'MeleeType'
 		},
 		{
 			id: 'Swordwhip',
 			name: 'Whipsword',
 			img: '/images/UI/Filter/T_Armory_WeaponType_Swordwhip.png',
-			dist: 'RangedType'
+			dist: 'MeleeType'
 		}
 	];
 
